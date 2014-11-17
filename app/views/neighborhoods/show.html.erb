@@ -9,4 +9,14 @@
   <dt>City</dt>
   <dd><%= @neighborhood.city %></dd>
 
+  <dt>Venues</dt>
+  <dd>
+    <ul>
+      <% Venue.where({ :neighborhood_id => @neighborhood.id}).each do |venue| %>
+        <!-- <li><%= Venue.find_by({ :id => venue.neighborhood_id }).name %></li> -->
+        <li><%= venue.name %></li>
+    <% end %>
+  </ul>
+  </dd>
+
 </dl>
