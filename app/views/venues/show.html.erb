@@ -7,7 +7,7 @@
   <dd><%= @venue.name %></dd>
 
   <dt>Neighborhood ID</dt>
-  <dd><%= @venue.neighborhood_id %></dd>
+  <dd><%= Neighborhood.find_by( :id => @venue.neighborhood_id).name %></dd>
 
   <dt>Address</dt>
   <dd><%= @venue.address %></dd>
