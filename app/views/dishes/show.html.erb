@@ -9,4 +9,13 @@
   <dt>Cuisine ID</dt>
   <dd><%= Cuisine.find_by( :id => @dish.cuisine_id).name %></dd>
 
+  <dt>Favorites</dt>
+  <dd>
+    <ul>
+      <% Favorite.where({ :dish_id => @dish.id}).each do |favorite| %>
+        <li><%= Venue.find_by({ :id => favorite.venue_id }).name %> favorited by <%= User.find_by({ :id => favorite.user_id }).username.capitalize %></li>
+    <% end %>
+  </ul>
+  </dd>
+
 </dl>
