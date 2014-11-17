@@ -6,6 +6,15 @@
   <dt>Name</dt>
   <dd><%= @venue.name %></dd>
 
+  <dt>Favorites</dt>
+  <dd>
+    <ul>
+      <% Favorite.where({ :venue_id => @venue.id}).each do |favorite| %>
+        <li><%= Dish.find_by({ :id => favorite.dish_id }).name %> favorited by <%= User.find_by({ :id => favorite.user_id }).username.capitalize %></li>
+    <% end %>
+  </ul>
+  </dd>
+
   <dt>Neighborhood ID</dt>
   <dd><%= Neighborhood.find_by( :id => @venue.neighborhood_id).name %></dd>
 
